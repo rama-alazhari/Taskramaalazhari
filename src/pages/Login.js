@@ -10,12 +10,16 @@ export default function Login() {
   const navigate = useNavigate();
 
   const validatePassword = (pass) => {
-    const regex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{8,}$/;
+    const regex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]).{8,}$/;
     return regex.test(pass);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!email) {
+      setError('Please enter your username or email.');
+      return;
+    }
     if (!validatePassword(password)) {
       setError('The password must contain 8 characters, an uppercase letter, a number, and at least one special symbol.');
       return;
@@ -102,16 +106,16 @@ export default function Login() {
             </div>
 
             <div className="d-flex justify-content-center gap-3 mt-3">
-              <a href="#google" className="btn btn-outline-dark rounded-circle d-flex align-items-center justify-content-center" style={{ width: '42px', height: '42px', p: 0, borderColor: '#ccc' }}>
+              <a href="#google" className="btn btn-outline-dark rounded-circle d-flex align-items-center justify-content-center" style={{ width: '42px', height: '42px', padding: 0, borderColor: '#ccc' }}>
                 <FaGoogle size={16} />
               </a>
-              <a href="#facebook" className="btn btn-outline-dark rounded-circle d-flex align-items-center justify-content-center" style={{ width: '42px', height: '42px', p: 0, borderColor: '#ccc' }}>
+              <a href="#facebook" className="btn btn-outline-dark rounded-circle d-flex align-items-center justify-content-center" style={{ width: '42px', height: '42px', padding: 0, borderColor: '#ccc' }}>
                 <FaFacebookF size={16} />
               </a>
-              <a href="#linkedin" className="btn btn-outline-dark rounded-circle d-flex align-items-center justify-content-center" style={{ width: '42px', height: '42px', p: 0, borderColor: '#ccc' }}>
+              <a href="#linkedin" className="btn btn-outline-dark rounded-circle d-flex align-items-center justify-content-center" style={{ width: '42px', height: '42px', padding: 0, borderColor: '#ccc' }}>
                 <FaLinkedinIn size={16} />
               </a>
-              <a href="#twitter" className="btn btn-outline-dark rounded-circle d-flex align-items-center justify-content-center" style={{ width: '42px', height: '42px', p: 0, borderColor: '#ccc' }}>
+              <a href="#twitter" className="btn btn-outline-dark rounded-circle d-flex align-items-center justify-content-center" style={{ width: '42px', height: '42px', padding: 0, borderColor: '#ccc' }}>
                 <FaTwitter size={16} />
               </a>
             </div>

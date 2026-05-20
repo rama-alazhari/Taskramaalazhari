@@ -31,8 +31,8 @@ export default function Home() {
 
   const regions = ['All', 'Asia', 'Europe', 'Africa', 'Americas', 'Oceania'];
 
-  const sliderCountries = countries.slice(0, 3);
-  const sidebarCountry = countries[3];
+  const sliderCountries = countries.length >= 3 ? countries.slice(0, 3) : [];
+  const sidebarCountry = countries.length >= 4 ? countries[3] : null;
 
   return (
     <Container className="py-4">
@@ -61,7 +61,7 @@ export default function Home() {
 
       <Row className="mb-5 align-items-stretch">
         <Col lg={8} md={12} className="mb-3 mb-lg-0">
-          {loading ? (
+          {loading || sliderCountries.length === 0 ? (
             <div className="p-5 text-center bg-light border rounded" style={{ minHeight: '300px' }}>
               <Spinner animation="border" variant="secondary" />
             </div>
